@@ -13,7 +13,7 @@ export class Match extends Component {
 		subscribers.splice(subscribers.indexOf(this.update)>>>0, 1);
 	}
 	render(props) {
-		let url = this.nextUrl || getCurrentUrl(),
+		let url = this.nextUrl || getCurrentUrl() || (props.history && props.history.location) || (props.history && props.history.getCurrentLocation && props.history.getCurrentLocation()) || '',
 			path = url.replace(/\?.+$/,'');
 		this.nextUrl = null;
 		return props.children[0] && props.children[0]({

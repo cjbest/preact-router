@@ -46,7 +46,7 @@ var Match = exports.Match = function (_Component) {
 	};
 
 	Match.prototype.render = function render(props) {
-		var url = this.nextUrl || (0, _preactRouter.getCurrentUrl)(),
+		var url = this.nextUrl || (0, _preactRouter.getCurrentUrl)() || (props.history && props.history.location) || (props.history && props.history.getCurrentLocation && props.history.getCurrentLocation()) || '',
 		    path = url.replace(/\?.+$/, '');
 		this.nextUrl = null;
 		return props.children[0] && props.children[0]({
